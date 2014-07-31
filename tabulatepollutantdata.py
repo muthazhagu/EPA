@@ -1,5 +1,5 @@
 from writefinalfile import writefinalfile
-#push to github
+
 
 def main():
     finalresultfile = open('/Users/muthu/Downloads/keerthi/eis_report/finalresult.csv', 'w')
