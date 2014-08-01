@@ -11,7 +11,7 @@ def buildrowobjectdict(row, rowobjectdict):
     1. row - this is a dictionary
     2. rowobjectdict - this is another dictionary
 
-    Purpose of this method is to initialize a Row object with values from a row dictionary, and then add it to the
+    Purpose of this method is to initialize a Row object with values from the row dictionary, and then add it to the
     rowobjectdict.
 
     For each row, a Row object is created.
