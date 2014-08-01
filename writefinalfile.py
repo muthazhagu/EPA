@@ -1,5 +1,5 @@
 import csv
-from buildrowobjectlist import buildrowobjectlist
+from buildrowobjectdict import buildrowobjectdict
 
 def writefinalfile(filename, finalresultfile):
     with open(filename) as f:
@@ -9,12 +9,13 @@ def writefinalfile(filename, finalresultfile):
         finalresultfile.writelines('\n')
 
         f_csv = csv.DictReader(f)
-        rowobjectlist = []
+        rowobjectdict = {}
 
         for row in f_csv:
-            buildrowobjectlist(row, rowobjectlist)
+            buildrowobjectdict(row, rowobjectdict)
 
-        for item in rowobjectlist:
-            finalresultfile.writelines(item.__str__())
+        for key in rowobjectdict.keys():
+            finalresultfile.writelines(rowobjectdict[key].__str__())
+            finalresultfile.writelines('\n')
 
         finalresultfile.close()
