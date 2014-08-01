@@ -2,6 +2,22 @@ from RowClass import Row
 
 
 def buildrowobjectdict(row, rowobjectdict):
+    """
+    Method does not return anything.
+
+    This method is called from the writefinalfile.py module.
+
+    Method takes two parameters as input.
+    1. row - this is a dictionary
+    2. rowobjectdict - this is another dictionary
+
+    Purpose of this method is to initialize a Row object with values from a row dictionary, and then add it to the
+    rowobjectdict.
+
+    For each row, a Row object is created.
+    This Row object is added to the rowobjectdict, if it does not already have the same key.
+    This Row object is updated with values from the row dictionary.
+    """
     rowobject = Row()
 
     rowobject.year = '2011'
