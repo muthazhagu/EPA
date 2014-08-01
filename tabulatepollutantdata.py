@@ -14,8 +14,9 @@ def findos():
 
 def main():
     findos()
+    inputfile = '/Users/muthu/Downloads/keerthi/eis_report/results.csv'
     finalresultfile = open('/Users/muthu/Downloads/keerthi/eis_report/finalresult.csv', 'w')
-    writefinalfile('/Users/muthu/Downloads/keerthi/eis_report/results.csv', finalresultfile)
+    writefinalfile(inputfile, finalresultfile)
 
 
 if __name__ == '__main__':
