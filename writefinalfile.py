@@ -1,7 +1,7 @@
 import csv
 from buildrowobjectdict import buildrowobjectdict
 
-def writefinalfile(filename, finalresultfile):
+def writefinalfile(filename, finalresultfile, year):
     with open(filename) as f:
         finalresultfile.writelines(','.join(
             ['year', 'addr_state_cd', 'eis_facility_site_id', 'facility_site_name', '7439921', 'CO', 'NOX', 'PM-PRI',
@@ -12,7 +12,7 @@ def writefinalfile(filename, finalresultfile):
         rowobjectdict = {}
 
         for row in f_csv:
-            buildrowobjectdict(row, rowobjectdict)
+            buildrowobjectdict(row, rowobjectdict, year)
 
         for key in rowobjectdict.keys():
             finalresultfile.writelines(rowobjectdict[key].__str__())
