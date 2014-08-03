@@ -2,9 +2,11 @@ from writefinalfile import writefinalfile
 from filehandling import findos
 from filehandling import getiofiledata
 from filehandling import joinfiles
+from datetime import datetime
 
 
 def main():
+    starttime = datetime.today()
     findos()
     filedata = getiofiledata()
     for val in filedata:
@@ -16,6 +18,8 @@ def main():
     print("Starting to combine files.")
     joinfiles()
     print("Finished combining files.")
+    endtime = datetime.today()
+    print("Process took: {} seconds".format((endtime - starttime).total_seconds()))
 
 
 if __name__ == '__main__':
