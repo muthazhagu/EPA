@@ -23,6 +23,7 @@ def recreatedir(workingdir, dirname):
 
 
 def checkworkingdir():
+    # os.chdir('/Users/muthu/Downloads/keerthi/eis_report/epa') # DO NOT UNCOMMENT THIS LINE.
     workingdir = os.getcwd()  # always run this program from within a directory named epa.
     return workingdir.endswith('epa')
 
@@ -48,8 +49,13 @@ def getiofiledata():
     os.chdir(inputdir)
     workingdir = os.getcwd()  # in the input dir now
     filedata = [
-        (os.path.join(workingdir, file), str(file[:4]), os.path.join(outputdir, os.path.splitext(file)[0] + '_output.csv'))
+        (os.path.join(workingdir, file), os.path.splitext(file)[0][-4:],
+         os.path.join(outputdir, os.path.splitext(file)[0] + '_output.csv'))
         for file in os.listdir(workingdir) if file.endswith('.csv')]
-    return filedata
+    if filedata:
+        return filedata
+    else:
+        print('No files to process.')
+        sys.exit()
 
 
