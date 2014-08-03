@@ -1,6 +1,7 @@
 from writefinalfile import writefinalfile
 from filehandling import findos
 from filehandling import getiofiledata
+from filehandling import joinfiles
 
 
 def main():
@@ -11,7 +12,10 @@ def main():
         finalresultfile = open(outputfile, 'w')
         print("Processing file: {}".format(inputfile))
         writefinalfile(inputfile, finalresultfile, year)
-    print("Done processing all files.")
+    print("Done processing all individual files.")
+    print("Starting to combine files.")
+    joinfiles()
+    print("Finished combining files.")
 
 
 if __name__ == '__main__':

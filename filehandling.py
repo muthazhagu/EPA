@@ -2,6 +2,7 @@ import os
 import os.path
 import shutil
 import sys
+import glob
 
 
 def findos():
@@ -23,8 +24,8 @@ def recreatedir(workingdir, dirname):
 
 
 def checkworkingdir():
-    # os.chdir('/Users/muthu/Downloads/keerthi/eis_report/epa') # DO NOT UNCOMMENT THIS LINE.
-    workingdir = os.getcwd()  # always run this program from within a directory named epa.
+    # os.chdir('/Users/muthu/Downloads/keerthi/eis_report/epa')  # DO NOT UNCOMMENT THIS LINE
+    workingdir = os.getcwd()  # always run this program from within a directory named epa
     return workingdir.endswith('epa')
 
 
@@ -35,8 +36,8 @@ def dirsetup():
         recreatedir(workingdir, 'processed')
         recreatedir(workingdir, 'output')
         inputdir = os.path.join(workingdir, 'input')
-        logdir = os.path.join(workingdir, 'log')
-        processeddir = os.path.join(workingdir, 'processed')
+        logdir = os.path.join(workingdir, 'log')  # FUTURE: if logging is needed, then store store logs here
+        processeddir = os.path.join(workingdir, 'processed')  # FUTURE: move processed files into this directory
         outputdir = os.path.join(workingdir, 'output')
         return inputdir, logdir, processeddir, outputdir
     else:
@@ -59,3 +60,30 @@ def getiofiledata():
         sys.exit()
 
 
+def joinfiles():
+    if checkworkingdir():
+        workingdir = os.getcwd()  # must return the epa directory
+        recreatedir(workingdir, 'combined')
+        combineddir = os.path.join(workingdir, 'combined')
+        os.chdir(os.path.join(workingdir, 'output'))  # In the output directory
+
+        statenames = [file[0:2] for file in glob.glob('*.csv')]
+        statenames.sort()
+        statenames = set(statenames)
+
+        for state in statenames:
+            # print("State: ", state)
+            sourcefilenames = glob.glob(state + '*')
+            # print("Source filenames: ", sourcefilenames)
+            destfilename = '_'.join([state, 'combined_output.csv'])
+            # print("Destination filename: ", destfilename)
+            with open(os.path.join(combineddir, destfilename), 'a') as dest:
+                with open(sourcefilenames[0]) as f:
+                    for line in f.readlines():
+                        dest.writelines(line)
+                    for source in sourcefilenames[1:]:
+                        # print("Source: ", source)
+                        with open(source) as f:
+                            header = f.readline()  # Skip the header from the second file onwards
+                            for line in f.readlines():
+                                dest.writelines(line)
