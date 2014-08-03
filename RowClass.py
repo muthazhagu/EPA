@@ -19,7 +19,7 @@ class Row:
     def lead(self, value):
         if self._lead == 'no data':
             self._lead = value
-        elif self._lead < value:
+        elif int(self._lead) < int(value):
             self._lead = value
             
     @property
@@ -30,7 +30,7 @@ class Row:
     def co(self, value):
         if self._co == 'no data':
             self._co = value
-        elif self._co < value:
+        elif int(self._co) < int(value):
             self._co = value
             
     @property
@@ -41,7 +41,7 @@ class Row:
     def nox(self, value):
         if self._nox == 'no data':
             self._nox = value
-        elif self._nox < value:
+        elif int(self._nox) < int(value):
             self._nox = value
             
     @property
@@ -52,7 +52,7 @@ class Row:
     def pmpri(self, value):
         if self._pmpri == 'no data':
             self._pmpri = value
-        elif self._pmpri < value:
+        elif int(self._pmpri) < int(value):
             self._pmpri = value
             
     @property
@@ -63,7 +63,7 @@ class Row:
     def so2(self, value):
         if self._so2 == 'no data':
             self._so2 = value
-        elif self._so2 < value:
+        elif int(self._so2) < int(value):
             self._so2 = value
             
     @property
@@ -74,7 +74,7 @@ class Row:
     def voc(self, value):
         if self._voc == 'no data':
             self._voc = value
-        elif self._voc < value:
+        elif int(self._voc) < int(value):
             self._voc = value
 
     def signature(self):
