@@ -1,11 +1,9 @@
 from writefinalfile import writefinalfile
 from filehandling import findos
 from filehandling import getiofiledata
-import os
 
 
 def main():
-    os.chdir('/Users/muthu/Downloads/keerthi/eis_report/epa')
     findos()
     filedata = getiofiledata()
     for val in filedata:
