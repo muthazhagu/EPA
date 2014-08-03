@@ -1,6 +1,7 @@
 import csv
 from buildrowobjectdict import buildrowobjectdict
 
+
 def writefinalfile(filename, finalresultfile, year):
     with open(filename) as f:
         finalresultfile.writelines(','.join(

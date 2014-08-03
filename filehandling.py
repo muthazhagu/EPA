@@ -47,12 +47,12 @@ def dirsetup():
 
 def getiofiledata():
     inputdir, logdir, processeddir, outputdir = dirsetup()
-    os.chdir(inputdir)
-    workingdir = os.getcwd()  # in the input dir now
+    # os.chdir(inputdir)
+    # workingdir = os.getcwd()  # in the input dir now
     filedata = [
-        (os.path.join(workingdir, file), os.path.splitext(file)[0][-4:],
+        (os.path.join(inputdir, file), os.path.splitext(file)[0][-4:],
          os.path.join(outputdir, os.path.splitext(file)[0] + '_output.csv'))
-        for file in os.listdir(workingdir) if file.endswith('.csv')]
+        for file in os.listdir(inputdir) if file.endswith('.csv')]
     if filedata:
         return filedata
     else:
@@ -87,3 +87,6 @@ def joinfiles():
                             header = f.readline()  # Skip the header from the second file onwards
                             for line in f.readlines():
                                 dest.writelines(line)
+    else:
+        print("Incorrect directory for data processing!")
+        sys.exit()

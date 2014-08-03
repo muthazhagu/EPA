@@ -21,7 +21,7 @@ class Row:
             self._lead = value
         elif int(self._lead) < int(value):
             self._lead = value
-            
+
     @property
     def co(self):
         return self._co
@@ -32,7 +32,7 @@ class Row:
             self._co = value
         elif int(self._co) < int(value):
             self._co = value
-            
+
     @property
     def nox(self):
         return self._nox
@@ -43,7 +43,7 @@ class Row:
             self._nox = value
         elif int(self._nox) < int(value):
             self._nox = value
-            
+
     @property
     def pmpri(self):
         return self._pmpri
@@ -54,7 +54,7 @@ class Row:
             self._pmpri = value
         elif int(self._pmpri) < int(value):
             self._pmpri = value
-            
+
     @property
     def so2(self):
         return self._so2
@@ -65,7 +65,7 @@ class Row:
             self._so2 = value
         elif int(self._so2) < int(value):
             self._so2 = value
-            
+
     @property
     def voc(self):
         return self._voc
