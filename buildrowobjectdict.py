@@ -1,7 +1,7 @@
 from RowClass import Row
 
 
-def buildrowobjectdict(row, rowobjectdict):
+def buildrowobjectdict(row, rowobjectdict, year):
     """
     Method does not return anything.
 
@@ -20,7 +20,7 @@ def buildrowobjectdict(row, rowobjectdict):
     """
     rowobject = Row()
 
-    rowobject.year = '2011'
+    rowobject.year = year
     rowobject.state = row['addr_state_cd']
     rowobject.efsi = row['eis_facility_site_id']
     rowobject.fsn = row['facility_site_name'].replace(',', '_')
