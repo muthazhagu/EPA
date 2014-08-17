@@ -2,6 +2,7 @@ from writefinalfile import writefinalfile
 from filehandling import findos
 from filehandling import getiofiledata
 from filehandling import joinfiles
+from filehandling import sortfiles
 from datetime import datetime
 
 
@@ -14,10 +15,13 @@ def main():
         finalresultfile = open(outputfile, 'w')
         print("Processing file: {}".format(inputfile))
         writefinalfile(inputfile, finalresultfile, year)
-    print("Done processing all individual files.")
-    print("Starting to combine files.")
+    print("Done processing individual files.")
+    print("Combining files.")
     joinfiles()
     print("Finished combining files.")
+    # print("Sorting files.")
+    # sortfiles()
+    # print("Finished sorting files.")
     endtime = datetime.today()
     print("Process took: {} seconds".format((endtime - starttime).total_seconds()))
 
