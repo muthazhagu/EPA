@@ -1,4 +1,10 @@
 class Row:
+    """
+    Represents a row object.
+    A row object consists of EFSI code, FSN, State abbr, year of the data observation,
+    followed by the pollutant concentration for multiple pollutants.
+    """
+
     def __init__(self):
         self.year = ''
         self.state = ''
@@ -17,6 +23,13 @@ class Row:
 
     @lead.setter
     def lead(self, value):
+        """
+        :param value: Takes the pollutant concentration as an input string.
+        :return: None.
+
+        Method sets the value of a pollutant if it contains 'no data', or if the existing
+        value is lesser than :param value.
+        """
         if self._lead == 'no data':
             self._lead = value
         elif int(self._lead) < int(value):
@@ -81,6 +94,10 @@ class Row:
         return ','.join([self.efsi, self.fsn, self.state, self.year])
 
     def __str__(self):
+        """
+        :return: String representation of the Row object.
+        Primarily used to write out the Row representation into a file.
+        """
         return ','.join([self.efsi, self.fsn, self.state, self.year, self.lead, self.co, self.nox, self.pmpri, self.so2,
                          self.voc])
 
