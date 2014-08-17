@@ -21,7 +21,7 @@ def buildrowobjectdict(row, rowobjectdict, year):
     rowobject = Row()
 
     rowobject.year = year
-    rowobject.state = row['addr_state_cd']
+    rowobject.state = row['addr_state_cd']  # FUTURE - check for state code in file name with data inside file.
     rowobject.efsi = row['eis_facility_site_id']
     rowobject.fsn = row['facility_site_name'].replace(',', '_')
 
