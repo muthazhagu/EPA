@@ -90,3 +90,23 @@ def joinfiles():
     else:
         print("Incorrect directory for data processing!")
         sys.exit()
+
+
+def sortfiles():
+    if checkworkingdir():
+        workingdir = os.getcwd()  # must return the epa directory
+        combineddir = os.path.join(workingdir, 'combined')
+        os.chdir(combineddir)
+
+        for file in glob.glob('*.csv'):
+            with open(file) as source:
+                with open('sorted_' + file, 'w') as target:
+                    lines = source.readlines()
+                    header, *data = lines
+                    data.sort()
+                    target.writelines(header)
+                    for line in data:
+                        target.writelines(line)
+    else:
+        print("Incorrect directory for data processing!")
+        sys.exit()
