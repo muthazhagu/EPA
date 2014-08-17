@@ -78,10 +78,10 @@ class Row:
             self._voc = value
 
     def signature(self):
-        return ','.join([self.year, self.state, self.efsi, self.fsn])
+        return ','.join([self.efsi, self.fsn, self.state, self.year])
 
     def __str__(self):
-        return ','.join([self.year, self.state, self.efsi, self.fsn, self.lead, self.co, self.nox, self.pmpri, self.so2,
+        return ','.join([self.efsi, self.fsn, self.state, self.year, self.lead, self.co, self.nox, self.pmpri, self.so2,
                          self.voc])
 
     def __eq__(self, other):
