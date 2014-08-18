@@ -1,4 +1,8 @@
 class Row:
+    """
+    Alternate implementation of the Row class.
+    This is not used in the program.
+    """
     def __init__(self):
         self.year = ''
         self.state = ''
