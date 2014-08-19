@@ -53,7 +53,7 @@ def create_vr_file(aFile):
              'PM-PRI_latest', 'PM-PRI_mean',
              'SO2_latest', 'SO2_mean',
              'VOC_latest', 'VOC_mean',
-             'In Violation?\n']))
+             'Recommendation\n']))
         for key in d.keys():
             allkeys = list(d[key].keys())
             allkeys.sort()
