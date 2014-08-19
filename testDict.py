@@ -1,7 +1,5 @@
 from statistics import mean
 from decimal import Decimal
-import os
-from glob import glob
 import csv
 from ViolationRecord import ViolationRecord
 
@@ -22,15 +20,11 @@ def findmean(aList):
         return 'no data'
 
 
-os.chdir('/Users/muthu/Downloads/keerthi/eis_report/epa/combined')
-
-
-def createdict():
-    with open('IW_combined_output.csv') as f:
+def createdict(aFile):
+    with open(aFile) as f:
         f_csv = csv.DictReader(f)
         d = {}
 
-        # count = 0
         for row in f_csv:
             key = (row['eis_facility_site_id'], row['facility_site_name'], row['addr_state_cd'])
             if key not in d:
@@ -46,10 +40,11 @@ def createdict():
         return d
 
 
-def main():
-    d = createdict()
+def create_vr_file(aFile):
+    d = createdict(aFile)
 
-    with open('violationrecords.csv', 'w') as f:
+    newFile = 'violationrecords_' + aFile
+    with open(newFile, 'w') as f:
         f.writelines(','.join(
             ['eis_facility_site_id', 'facility_site_name', 'addr_state_cd', 'year',
              '7439921_latest', '7439921_mean',
@@ -87,7 +82,3 @@ def main():
 
             f.writelines(vr.__str__())
             f.writelines('\n')
-
-
-if __name__ == '__main__':
-    main()
