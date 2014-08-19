@@ -3,6 +3,7 @@ import os.path
 import shutil
 import sys
 import glob
+from testDict import create_vr_file
 
 
 def findos():
@@ -87,6 +88,7 @@ def joinfiles():
                             header = f.readline()  # Skip the header from the second file onwards
                             for line in f.readlines():
                                 dest.writelines(line)
+        os.chdir(workingdir)
     else:
         print("Incorrect directory for data processing!")
         sys.exit()
@@ -107,6 +109,22 @@ def sortfiles():
                     target.writelines(header)
                     for line in data:
                         target.writelines(line)
+        os.chdir(workingdir)
     else:
         print("Incorrect directory for data processing!")
+        sys.exit()
+
+
+def vrfiles():
+    if checkworkingdir():
+        workingdir = os.getcwd()  # must return the epa directory
+        combineddir = os.path.join(workingdir, 'combined')
+        os.chdir(combineddir)
+
+        for file in glob.glob('*.csv'):
+            create_vr_file(file)
+
+        os.chdir(workingdir)
+    else:
+        print("Incorrect directory for data processing ->", os.getcwd())
         sys.exit()
