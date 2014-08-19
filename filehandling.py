@@ -3,7 +3,7 @@ import os.path
 import shutil
 import sys
 import glob
-from testDict import create_vr_file
+from ViolationRecordProcessing import create_vr_file
 
 
 def findos():
