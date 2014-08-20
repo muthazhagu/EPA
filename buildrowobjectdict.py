@@ -39,7 +39,7 @@ def buildrowobjectdict(row, rowobjectdict, year):
         currobj.co = row.get('total_emissions')
     elif row.get('pollutant_cd').strip() == 'NOX':
         currobj.nox = row.get('total_emissions')
-    elif row.get('pollutant_cd').strip() == 'PM-PRI':
+    elif row.get('pollutant_cd').strip() == 'PM10-PRI':
         currobj.pmpri = row.get('total_emissions')
     elif row.get('pollutant_cd').strip() == 'SO2':
         currobj.so2 = row.get('total_emissions')
