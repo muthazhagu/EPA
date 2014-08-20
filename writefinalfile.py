@@ -5,7 +5,7 @@ from buildrowobjectdict import buildrowobjectdict
 def writefinalfile(filename, finalresultfile, year):
     with open(filename) as f:
         finalresultfile.writelines(','.join(
-            ['eis_facility_site_id', 'facility_site_name', 'addr_state_cd', 'year', '7439921', 'CO', 'NOX', 'PM-PRI',
+            ['eis_facility_site_id', 'facility_site_name', 'addr_state_cd', 'year', '7439921', 'CO', 'NOX', 'PM10-PRI',
              'SO2', 'VOC']))
         finalresultfile.writelines('\n')
 
