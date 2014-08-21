@@ -2,6 +2,9 @@ from decimal import Decimal
 
 
 class ViolationRecord:
+    """
+    This class encapsulates the recommendation data.
+    """
     def __init__(self):
         self.year = ''
         self.state = ''
@@ -16,6 +19,18 @@ class ViolationRecord:
         self.in_violation = 'N'
 
     def update_in_violation(self):
+        """
+        This method does not return anything.
+
+        It compares the data from the latest year, to the mean of the data from the previous years,
+        and sets the in_violation property to Y, if in violation (i.e. needs recommendation).
+
+        It sets the in_violation property to Y, if and only if ALL of the following conditions are satisfied -
+        1. Latest year's data is not the same as the mean of the previous years' data.
+        2. Latest year's data is not 'no data'
+        3. Mean is not 'no data'
+        4. Latest year's data is greater than the mean of the previous years' data.
+        """
         latest = [self.lead_latest, self.co_latest, self.nox_latest, self.pmpri_latest, self.so2_latest, self.voc_latest]
         mean = [self.lead_mean, self.co_mean, self.nox_mean, self.pmpri_mean, self.so2_mean, self.voc_mean]
         latest_and_mean = list(zip(latest, mean))
