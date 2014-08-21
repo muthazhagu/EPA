@@ -21,6 +21,23 @@ def findmean(aList):
 
 
 def createdict(aFile):
+    """
+    :param aFile: Filename of the file containing the combined data - i.e. files in the combined dir.
+    :return: A massive dictionary that contains data in this format - for example -
+    {('12345', 'FacilityName'):{'2001': ['1', '2', '3', '4', '5', '6'],
+                                '2002': ['1', '2', '3', 'no data', '5', '6'],
+                                '2003': ['1', '2', '3', 'no data', '5', '6']
+                            }
+    }
+
+    The above data structure is a dict containing a dict whose values are a list.
+    The outer dict's key is the Facility ID, and the Facility Name.
+    The inner dict's key is the year of the data.
+    The lists contain the pollutant's concentration in tons per year.
+    If there is no data for a particular year, it is represented as 'no data'
+
+    This method may have to be reimplemented, if the data cannot fit within main memory.
+    """
     with open(aFile) as f:
         f_csv = csv.DictReader(f)
         d = {}
@@ -41,6 +58,14 @@ def createdict(aFile):
 
 
 def create_vr_file(aFile):
+    """
+    :param aFile: Combined file name, i.e. files in the combined dir.
+    :return: Returns nothing.
+
+    Inspite of its size, this method is very simple.
+    All it does is, for every file in the combined dir, it creates another file containing the recommendation data.
+    """
+
     d = createdict(aFile)
 
     newFile = 'followup_details_' + aFile
