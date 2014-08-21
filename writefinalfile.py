@@ -13,6 +13,7 @@ def writefinalfile(filename, finalresultfile, year):
 
     Method name is a misnomer - it really does not write the final result, but instead a file needed
     for intermediate data processing.
+
     """
     with open(filename) as f:
         finalresultfile.writelines(','.join(
